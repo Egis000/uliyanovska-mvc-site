@@ -1,0 +1,8 @@
+{
+  "name": "uliyanovska-api",
+  "version": "1.0.0",
+  "description": "Simple Node API for sum",
+  "scripts": {
+    "start": "node server.js"
+  }
+}
