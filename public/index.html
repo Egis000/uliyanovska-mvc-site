@@ -22,6 +22,32 @@
     </header>
 
     <main>
+        <section class="api-section">
+  <h3>Калькулятор суми</h3>
+  <input id="a" type="number" placeholder="Число A">
+  <input id="b" type="number" placeholder="Число B">
+  <button id="calc">Скласти</button>
+  <div id="out"></div>
+</section>
+
+<script>
+  const apiBase = 'https://ТВОЙ-СЕРВЕР.onrender.com'; // замени на реальный URL
+
+  document.getElementById('calc').addEventListener('click', async () => {
+    const a = document.getElementById('a').value;
+    const b = document.getElementById('b').value;
+    const url = `${apiBase}/sum?a=${encodeURIComponent(a)}&b=${encodeURIComponent(b)}`;
+    try {
+      const res = await fetch(url);
+      const data = await res.json();
+      document.getElementById('out').textContent =
+        data.result !== undefined ? `Результат: ${data.result}` : `Помилка: ${data.error}`;
+    } catch (e) {
+      document.getElementById('out').textContent = 'Сервер недоступний';
+    }
+  });
+</script>
+
         <section class="info-section">
             <div class="info-text">
                 <h2>Завідувач кафедри, доцент, кандидат технічних наук<br>
@@ -58,3 +84,4 @@
     <script src="dom-navigator.js"></script>
 </body>
 </html>
+
